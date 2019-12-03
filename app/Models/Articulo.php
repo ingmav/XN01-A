@@ -4,7 +4,7 @@ namespace App\Models;
 
 use App\Models\BaseModel;
 
-class VentasDetalles extends BaseModel
+class Articulo extends BaseModel
 {
     protected $generarID = false;
     protected $guardarIDServidor = false;
@@ -12,11 +12,8 @@ class VentasDetalles extends BaseModel
     public $incrementing = true;
 
     
-    protected $table = 'ms_ventas_detalles';  
+    protected $table = 'ms_articulos';  
     protected $fillable = [];
 
-    public function articulo()
-    {
-        return $this->belongsTo("App\Models\Articulo");
-    }
+    
 }

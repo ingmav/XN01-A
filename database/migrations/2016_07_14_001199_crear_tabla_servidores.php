@@ -25,13 +25,7 @@ class CrearTablaServidores extends Migration{
             $table->primary('id');
         });
 
-        Schema::create('sincronizaciones', function (Blueprint $table) {
-            $table->increments('id');
-            $table->string('servidor_id',4);
-            $table->timestamp('fecha_generacion');
-            $table->timestamps();
-            $table->foreign('servidor_id')->references('id')->on('servidores')->onUpdate('cascade')->onDelete('cascade');
-        });
+        
     }
 
     /**
@@ -40,7 +34,7 @@ class CrearTablaServidores extends Migration{
      * @return void
      */
     public function down(){
-        Schema::drop('sincronizaciones');
+        
         Schema::drop('servidores');
     }
 }

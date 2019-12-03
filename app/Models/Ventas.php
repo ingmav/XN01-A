@@ -8,7 +8,7 @@ class Ventas extends BaseModel
 {
     protected $generarID = false;
     protected $guardarIDServidor = false;
-    //protected $guardarIDUsuario = false;
+    protected $guardarIDUsuario = false;
     public $incrementing = true;
 
     
@@ -18,5 +18,10 @@ class Ventas extends BaseModel
     public function cliente()
     {
         return $this->hasOne("App\Models\Cliente", "id", "cliente_id");
+    }
+
+    public function ventas_detalles()
+    {
+        return $this->hasMany("App\Models\VentasDetalles");
     }
 }

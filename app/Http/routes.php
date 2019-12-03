@@ -26,6 +26,11 @@ Route::group(['middleware' => 'jwt'], function () {
     Route::resource('permisos', 'PermisoController',    ['only' => ['index', 'show', 'store','update','destroy']]);
     
     Route::resource('trabajos-pendientes', 'TrabajosPendientesController',    ['only' => ['index', 'show', 'store','update','destroy']]);
+    Route::resource('produccion', 'ProduccionController',    ['only' => ['index', 'show', 'store','update','destroy']]);
+
+    Route::put('agenda/{id}',                             'ProduccionController@agenda');
+    Route::put('iniciar_trabajo/{id}',                    'ProduccionController@iniciar_proceso');
+    Route::put('finalizar_trabajo/{id}',                    'ProduccionController@finalizar_proceso');
 
     Route::group(['prefix' => 'sync','namespace' => 'Sync'], function () {
         Route::get('manual',    'SincronizacionController@manual');        

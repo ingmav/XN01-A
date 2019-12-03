@@ -14,7 +14,7 @@ class UsuariosSeeder extends Seeder
         DB::table('usuarios')->insert([
             [
                 'id' => 'root',
-                //'servidor_id' =>  env("SERVIDOR_ID"),
+                'SERVIDOR_ID' => env('SERVIDOR_ID'),
                 'password' => Hash::make('sumami'),
                 'nombre' => 'Super',
                 'apellidos' => 'Usuario',

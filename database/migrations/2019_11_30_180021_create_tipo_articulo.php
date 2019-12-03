@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateTableSincronizacion extends Migration
+class CreateTipoArticulo extends Migration
 {
     /**
      * Run the migrations.
@@ -12,13 +12,12 @@ class CreateTableSincronizacion extends Migration
      */
     public function up()
     {
-        Schema::create ('msw_sincronizacion', function (Blueprint $table){
-           $table->Increments('id')->unsigned();
-           $table->datetime('fecha');
-
-           $table->timestamps();
-           $table->softDeletes();
-
+        Schema::create ('msw_tipo', function (Blueprint $table){
+            $table->Increments('id')->unsigned();
+            $table->string('descripcion');
+            $table->timestamps();
+            $table->softDeletes();
+            
         });
     }
 
@@ -29,6 +28,6 @@ class CreateTableSincronizacion extends Migration
      */
     public function down()
     {
-        Schema::drop('msw_sincronizacion');
+        Schema::drop('msw_tipo');
     }
 }

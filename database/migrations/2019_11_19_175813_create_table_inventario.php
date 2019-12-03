@@ -14,17 +14,17 @@ class CreateTableInventario extends Migration
     {
         Schema::create ('msw_inventario', function (Blueprint $table){
             $table->Increments('id')->unsigned();
-            $table->integer('unidades');
-            $table->integer('unidades_restantes');
-            $table->decimal('cantidad_m2',15,2);
-            $table->decimal('cantidad_m2_restante',15,2);
-            $table->decimal('cantidad_ml',15,2);
-            $table->decimal('cantidad_ml_restante',15,2);
-            $table->decimal('precio_unitario',15,2);
-            $table->decimal('total_m2',15,2);
-            $table->decimal('total_m2_restante',15,2);
-            $table->decimal('total_ml',15,2);
-            $table->decimal('total_ml_restante',15,2);
+            $table->integer('unidades')->default(0);
+            $table->integer('unidades_restantes')->default(0);
+            $table->decimal('cantidad_m2',15,2)->default(0);
+            $table->decimal('cantidad_m2_restante',15,2)->default(0);
+            $table->decimal('cantidad_ml',15,2)->default(0);
+            $table->decimal('cantidad_ml_restante',15,2)->default(0);
+            $table->decimal('precio_unitario',15,2)->default(0);
+            $table->decimal('total_m2',15,2)->default(0);
+            $table->decimal('total_m2_restante',15,2)->default(0);
+            $table->decimal('total_ml',15,2)->default(0);
+            $table->decimal('total_ml_restante',15,2)->default(0);
 
             $table->timestamps();
             $table->softDeletes();

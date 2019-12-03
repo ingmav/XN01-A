@@ -15,7 +15,7 @@ class CrearTablaPivoteRolUsuario extends Migration
         Schema::create('rol_usuario', function (Blueprint $table) {
             		
 			$table->integer('rol_id')->unsigned();
-            $table->Integer('usuario_id')->unsigned();
+            $table->string('usuario_id');
 
 			$table->foreign('rol_id')
                   ->references('id')->on('roles')

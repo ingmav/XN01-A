@@ -14,19 +14,15 @@ class CreateTableInventarioDetalles extends Migration
     {
         Schema::create('msw_inventario_detallado', function(Blueprint $table){
             $table->Increments('id')->unsigned();
-            $table->decimal('cantidad',15,2);
-            $table->decimal('base',15,2);
-            $table->decimal('altura',15,2);
-            $table->decimal('m2',15,2);
-            $table->decimal('ml',15,2);
-            $table->decimal('precio_unitario',15,2);
+            $table->decimal('cantidad',15,2)->default(0);
+            $table->decimal('base',15,2)->default(0);
+            $table->decimal('altura',15,2)->default(0);
+            $table->decimal('m2',15,2)->default(0);
+            $table->decimal('ml',15,2)->default(0);
+            $table->decimal('precio_unitario',15,2)->default(0);
             $table->string('descripcion');
             $table->date('fecha');
-            /*$table->unsignedInteger('articulos_id');
-            $table->foreign('articulos_id')->references('id')->on('articulos');
-            $table->string('usuario_id');
-            $table->foreign('usuario_id')->references('id')->on('usuarios');*/
-
+           
             $table->timestamps();
             $table->softDeletes();
             
