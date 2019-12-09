@@ -46,7 +46,6 @@ class ProduccionController extends Controller
             break;
             case 4: // Preparacion
                 $obj = $obj->where("preparacion", 1)
-                ->whereIn("estatus_preparacion", [0, 2])
                 ->where(function ($query) {
                     $query->Where('diseno', '=', 0)
                           ->orWhere('diseno', '=', 1)
@@ -61,9 +60,14 @@ class ProduccionController extends Controller
                     $query->Where('impresion_digital', '=', 0)
                           ->orWhere('impresion_digital', '=', 1)
                           ->where('estatus_impresion_digital', '=', 1);
-                });    
+                })
+                ->where(function ($query) {
+                    $query->whereIn("estatus_preparacion", [0, 2])
+                            ->orWhereIn("estatus_instalacion", [0, 2])    
+                            ->orWhereIn("estatus_entrega", [0, 2]);    
+                }); 
             break;
-            case 5: // Instalacion
+            /*case 5: // Instalacion
                 $obj = $obj->where("instalacion", 1)
                 ->whereIn("estatus_instalacion", [0, 2])
                 ->where(function ($query) {
@@ -110,7 +114,7 @@ class ProduccionController extends Controller
                           ->orWhere('preparacion', '=', 1)
                           ->where('estatus_preparacion', '=', 1);
                 });    
-            break;
+            break;*/
             case 7: //Maquilas
                 $obj = $obj->where("maquilas", 1)
                 ->whereIn("estatus_maquilas", [0, 2])

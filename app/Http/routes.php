@@ -27,6 +27,7 @@ Route::group(['middleware' => 'jwt'], function () {
     
     Route::resource('trabajos-pendientes', 'TrabajosPendientesController',    ['only' => ['index', 'show', 'store','update','destroy']]);
     Route::resource('produccion', 'ProduccionController',    ['only' => ['index', 'show', 'store','update','destroy']]);
+    Route::resource('tablero', 'TableroController',    ['only' => ['index', 'show', 'store','update','destroy']]);
 
     Route::put('agenda/{id}',                             'ProduccionController@agenda');
     Route::put('iniciar_trabajo/{id}',                    'ProduccionController@iniciar_proceso');
