@@ -16,7 +16,7 @@ class CreateTableVentas extends Migration
             //$table->Integer('docto_ve_id')->unsigned()->primary();
             $table->Increments('id')->unsigned();
             $table->Integer('tipo_venta')->default(1)->unsigned();
-            $table->string('folio',9);
+            $table->string('folio',9)->unique();
             $table->date('fecha');
             $table->time('hora');
             $table->string('clave_cliente', 5);
