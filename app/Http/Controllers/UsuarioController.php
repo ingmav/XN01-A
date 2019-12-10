@@ -62,11 +62,10 @@ class UsuarioController extends Controller
             'id'            => 'required|email|unique:usuarios',
             'password'      => 'required',
             'nombre'        => 'required',
-            'apellidos'     => 'required',
-            'id_jurisdiccion' => 'required',
+            'apellidos'     => 'required'
         ];
 
-        $inputs = Input::only('id','servidor_id','password','nombre', 'apellidos','avatar','roles','temas', 'id_jurisdiccion');
+        $inputs = Input::only('id','servidor_id','password','nombre', 'apellidos','avatar','roles');
 
         $v = Validator::make($inputs, $reglas, $mensajes);
 
@@ -83,14 +82,6 @@ class UsuarioController extends Controller
             
             $usuario->roles()->sync($inputs['roles']);
             
-            $arreglo_temas = [];
-            foreach ($inputs['temas'] as $key => $value) {
-                $index = count($arreglo_temas);
-                $arreglo_temas[$index]['usuario_id'] = $usuario->id;
-                $arreglo_temas[$index]['id_tema'] = $value['id'];
-            }
-            //
-            $relacion = RelUsuarioTema::insert($arreglo_temas);
             DB::commit();
             return Response::json([ 'data' => $usuario ],200);
 

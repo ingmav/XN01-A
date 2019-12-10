@@ -19,15 +19,14 @@ class RolController extends Controller
      */
     public function index()
     {
-        //return Response::json([ 'data' => []],200);
-        //return Response::json(['error' => "NO EXSITE LA BASE"], 500);
         $parametros = Input::only('q','page','per_page');
+        $roles = Rol::whereNull("deleted_at");
         if ($parametros['q']) {
-             $roles =  Rol::where('nombre','LIKE',"%".$parametros['q']."%");
+             $roles =  $roles->where('nombre','LIKE',"%".$parametros['q']."%");
         } else {
-             $roles =  Rol::select('*');
+             $roles =  $roles->select('*');
         }
-
+        //return Response::json([ 'data' => Rol::whereNull("deleted_at")->get()],200);
         if(isset($parametros['page'])){
 
             $resultadosPorPagina = isset($parametros["per_page"])? $parametros["per_page"] : 20;
