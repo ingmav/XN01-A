@@ -107,7 +107,7 @@ class UsuarioController extends Controller
         }
         unset($object->password);
         $object->roles;
-        $object->usuarioTema;
+        //$object->usuarioTema;
 
         /*foreach ($object->usuarioTema as $key => $value) {
             unset($object->usuarioTema[$key]['pivot']);
@@ -159,7 +159,7 @@ class UsuarioController extends Controller
             $object->apellidos =  $inputs['apellidos'];
             $object->avatar =  $inputs['avatar'];
             $object->id =  $inputs['id'];
-            $object->id_jurisdiccion =  $inputs['id_jurisdiccion'];
+            //$object->id_jurisdiccion =  $inputs['id_jurisdiccion'];
             if ($inputs['cambiarPassword'] ){
                 $object->password = Hash::make($inputs['password']);
             }
@@ -168,13 +168,7 @@ class UsuarioController extends Controller
 
             $object->roles()->sync($inputs['roles']);
 
-            $arreglo_temas = [];
-            foreach ($inputs['temas'] as $key => $value) {                
-                $arreglo_temas[] = $value['id'];
-            }
-
-            $object->usuarioTema()->sync($arreglo_temas);
-            
+           
             //return Response::json([ 'data' => "bien hassta aca" ],500);
             DB::commit();
             return Response::json([ 'data' => $object ],200);

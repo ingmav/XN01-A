@@ -20,7 +20,8 @@ class TrabajosPendientesController extends Controller
         $obj = Ventas::with("cliente", "ventas_detalles.articulo")->where("estatus_produccion", 0);
         
         if ($parametros['q']) {
-             $obj =  $obj->where('folio','LIKE',"%".$parametros['q']."%");
+             //$obj =  $obj->where('folio','LIKE',"%".$parametros['q']."%");
+             $obj =  $obj->whereRaw("cliente_id in (select id from ms_clientes where nombre like '%".$parametros['q']."%')")->orWhere('folio','LIKE',"%".$parametros['q']."%");
         } else {
              $obj =  $obj->select('*');
         }
